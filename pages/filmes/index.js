@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
 
     const resultado = await apiFilmes.get('/movie/popular')
     const filmes = resultado.data.results
-
+    
     return {
         props: { filmes },
     }

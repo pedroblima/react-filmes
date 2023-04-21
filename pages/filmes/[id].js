@@ -3,7 +3,7 @@ import apiFilmes from '@/services/apiFilmes'
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
-const Detalhes = ({ filme }) => {
+const Detalhes = ({ filme, atores }) => {
   return (
     <Pagina titulo={filme.title}>
       <Row>
@@ -17,7 +17,7 @@ const Detalhes = ({ filme }) => {
           <p><strong>Nota: </strong>{filme.vote_average}</p>
 
 
-          <div> 
+          <div>
             <strong>Generos:</strong>
             <ul>
               {filme.genres.map(item => (
@@ -25,12 +25,20 @@ const Detalhes = ({ filme }) => {
               ))}
             </ul>
           </div>
-          
-          <p>{filme.overview}</p>
 
+          <p>{filme.overview}</p>
         </Col>
       </Row>
-
+        
+        <h2>Atores</h2>
+        
+      <Row>
+        {atores.map(item => (
+          <Col className='mb-3' md={2}>
+            <Card.Img variant="top"  src={"https://image.tmdb.org/t/p/w500" + item.profile_path} />
+          </Col>
+        ))}
+      </Row>
     </Pagina>
 
   )
@@ -45,7 +53,13 @@ export async function getServerSideProps(context) {
   const resultado = await apiFilmes.get('/movie/' + id)
   const filme = resultado.data
 
+  const resAtores = await apiFilmes.get('/movie/' + id + '/credits')
+  const atores = resAtores.data.cast
+
+
+
+
   return {
-    props: { filme },
+    props: { filme, atores },
   }
 }
