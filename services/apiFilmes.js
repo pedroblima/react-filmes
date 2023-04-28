@@ -1,4 +1,4 @@
-import axios from "axios";
+const { default: axios } = require("axios");
 
 const apiFilmes = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
