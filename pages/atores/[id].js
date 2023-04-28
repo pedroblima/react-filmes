@@ -22,9 +22,9 @@ const Detalhes = ({ ator, imagens, filmes, series }) => {
                 </Col>
             </Row>
             
-            <Fotos titulo="Imagens" lista={imagens} foto="file_path" />
-            <Fotos titulo="Filmes" lista={filmes} foto="poster_path" link="/filmes/" />
-            <Fotos titulo="Séries" lista={series} foto="poster_path" link="/series/" />
+            <Galeria titulo="Imagens" lista={imagens} foto="file_path" />
+            <Galeria titulo="Filmes" lista={filmes} foto="poster_path"  />
+            <Galeria titulo="Séries" lista={series} foto="poster_path" link="/series/"/>
 
         </Pagina>
     )

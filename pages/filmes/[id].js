@@ -1,5 +1,7 @@
+import Galeria from '@/components/Galeria'
 import Pagina from '@/components/Pagina'
 import apiFilmes from '@/services/apiFilmes'
+import Link from 'next/link'
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
@@ -32,13 +34,7 @@ const Detalhes = ({ filme, atores }) => {
         
         <h2>Atores</h2>
         
-      <Row>
-        {atores.map(item => (
-          <Col className='mb-3' md={2}>
-            <Card.Img variant="top"  src={"https://image.tmdb.org/t/p/w500" + item.profile_path} />
-          </Col>
-        ))}
-      </Row>
+        <Galeria titulo='Atores' lista={atores} foto="profile_path" link="/atores/"/>
     </Pagina>
 
   )
